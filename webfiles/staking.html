@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: "Courier";
+            background-color: black;
+            color: antiquewhite;
+        }
+
+        h1 {
+            font-size: 4em;
+            text-align: center;
+            margin-top: 0.5em;
+        }
+
+        #connectPopUp {
+            text-align: center;
+            visibility: collapse;
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999999;
+            box-shadow: 0px 5px 5px 0px black;
+            min-height: 300px;
+            min-width: 350px;
+            width: 50%;
+            padding: 5px;
+            padding-top: 15px;
+            font-weight: 700;
+        }
+
+        #connectBtn,
+        #connectBtn2,
+        #connectBtn3,
+        #connectBtn4 {
+            background-color: black;
+        }
+
+        #errorMsg {
+            text-align: center;
+            visibility: collapse;
+            color: red;
+            background-color: white;
+            border-radius: 0px 0px 5px 5px;
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 999999;
+            box-shadow: 0px 5px 5px 0px black;
+            min-height: 75px;
+            width: 300px;
+            padding: 5px;
+            padding-top: 15px;
+            font-weight: 700;
+        }
+
+        #successMsg {
+            text-align: center;
+            visibility: collapse;
+            color: green;
+            background-color: white;
+            border-radius: 5px 0px 5px 0px;
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 999999;
+            box-shadow: 0px 5px 5px 0px black;
+            min-height: 75px;
+            width: 300px;
+            padding: 5px;
+            padding-top: 15px;
+            font-weight: 700;
+        }
+    </style>
+    <title>Artificial Ignorance</title>
+</head>
+
+<body>
+    <div id="errorMsg"></div>
+    <div id="successMsg"></div>
+    <div class="container justify-content-center" id="connectPopUp">
+        <i class="float-left fa fa-2x fa-arrow-circle-left" onclick="CloseConnect()"></i>
+        <h4><i class="fa fa-wallet"></i>&nbsp;Connect to use CRAB&nbsp;<i class="fa fa-wallet"></i></h4>
+        <br /><br />
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <button class="btn btn-block btn-primary" style="background-color:black;" onclick="MetamaskConnect()">Metamask</button><br />
+            <button class="btn btn-block btn-primary" style="background-color:black;" onclick="MetamaskConnect()">Coinbase Wallet</button><br />
+            <button class="btn btn-block btn-primary" style="background-color:black;" onclick="MetamaskConnect()">Opera</button><br />
+            <button class="btn btn-block btn-primary" style="background-color:black;" onclick="WalletConnect()">Wallet Connect</button><br />
+          </div>
+        </div>
+      </div>
+    <div style="text-align: center; margin-top:25px;">
+        <a href="./index.html"><button class="button">HOME</button></a><br />
+        <h1>AIG STAKING</h1><br />
+        <div class="container">
+            <button id="connectBtn" class="btn btn-primary col-10" onclick="Connect()">Connect&nbsp;<i
+                class="fa fa-wallet"></i></button><br />
+            <button id="disconnectBtn" style="visibility: collapse; position:absolute;"
+              class="btn btn-warning col-10" onclick="Disconnect()">Disconnect&nbsp;<i
+                class="fa fa-wallet"></i></button>
+                <br/><br/>
+            <img style="border-radius:50%; min-width: 225px; max-width:750px; width:22.5%;" src="./img/ai.png"
+                onclick="window.location('./index.html');" /><br /><br /><br />
+            <div class="text-left">
+                <h2>Stake AIG to earn IGNANT</h2>
+                <p>Staking AIG returns a variable APY with a minimum of ~10.01% APY, paid in IGNANT tokens.</p>
+                <p>Burning IGNANT relative to staked AIG balance increases staking to max ~100.1% APY</p>
+                <p>In the first 100 days, maximum APY decreases from ~10,018% on day 1, until day 100 at 100.1%</p>
+                <p>Within only the first 100 days, users who have burnt for max APY should claim interest daily, as when
+                    each day ticks over, claimable interest will adjust accordingly.</p>
+                <p>IGNANT inflation slows overtime and can even become deflationary
+                    depending on AIG staked supply and IGNANT burn rate.</p>
+                <p>Claiming IGNANT, burning IGNANT or adding to your staked AIG resets the 3 day lock period of your stake.</p>
+
+                <div class="row justify-content-center">
+                    <div style="border:solid lightgrey 5px; padding:15px; margin-bottom:30px" class="col-12 col-md-6">
+                        <h3>AIG Staking</h3>
+                        <h4>Max APY @ <span style="font-size:large; font-weight: 700;" id="maxStakingAPY">~10018%</span>
+                        </h4><br>
+                        <span>Your current APY @ <span style="font-size:large; font-weight: 700;"
+                                id="aigStakingAPY">N/A</span></span><br>
+                        <span>Lock period: <span style="font-weight: 700;"
+                                id="aigStakingDaysLeft">N/A</span></span><br /><br />
+                        <form class="zform">
+                            <div class="form-group text-left">
+                                <i class="fa fa-wallet"></i>Connected Wallet: <span id="userAddress">N/A</span><br />
+                                AIG Balance: <span id="aigBalance">0 AIG</span> <br />
+
+                                <b>AIG Staked: <span id="aigStaked">0 AIG</span></b>
+
+                                <br />
+                                <label class="ls text-uppercase mb-0">Stake AIG to earn a minimum 10.01% APY paid in
+                                    IGNANT</label>
+                                <input style="background-color: lightgoldenrodyellow;" class="form-control"
+                                    type="number" step="any" placeholder="Stake Amount" id="stakeAmount" />
+                                <label class="ls text-uppercase mb-0"><i class="fa fa-info-circle"></i>&nbsp;Staking /
+                                    Unstaking AIG claims any accrued yield</label>
+                                <a id="approveNftBtn" style="color:white;" class="btn btn-block btn-primary mt-4"
+                                    onclick="ApproveTokens()">Approve AIG&nbsp;<i class="fa fa-thumbs-up"></i></a>
+                                <a style="color:white;" class="btn btn-block btn-success mt-4"
+                                    onclick="StakeTokens()">Stake
+                                    AIG&nbsp;<i class="fa fa-lock"></i></a>
+                                <a style="color:white;" class="btn btn-block btn-warning mt-4"
+                                    onclick="UnstakeTokens()">Unstake AIG&nbsp;<i class="fa fa-unlock"></i></a>
+                                <label class="ls text-uppercase mb-0"><i class="fa fa-info-circle"></i>&nbsp;Unstakes
+                                    all
+                                    staked AIG</label>
+                            </div>
+                            <div class="form-group text-left">
+                                <label class="ls text-uppercase mb-0">Claimable Interest</label>
+                                <!--<label class="ls text-uppercase mb-0" id="stakingRewardsValue">$0</label>-->
+                                <span class="form-control" id="stakingRewards">0 IGNANT</span>
+                                <label id="timeTillDayEnd" class="ls text-uppercase mb-0">Day Ends In : N/A</label>
+                            </div>
+                            <a style="color:white;" class="btn btn-block btn-primary mt-4"
+                                onclick="ClaimInterest()">Claim
+                                IGNANT&nbsp;<i class="fas fa-handshake"></i></a>
+                            <label class="ls text-uppercase mb-0"><i class="fa fa-info-circle"></i>&nbsp;Claim sends
+                                yield direct to wallet</label>
+                        </form>
+                    </div>
+                    <div style="max-height: 400px; border:solid lightgrey 5px; padding:15px; margin-bottom:30px;"
+                        class="col-12 col-md-6">
+                        <h3>IGNANT Burning</h3>
+                        <p>Burn IGNANT to increase your own staking APY! Burn 1:1 of IGNANT tokens to your AIG staked
+                            balance for <b>max</b> staking bonus.</p>
+                        <form class="zform">
+                            <div class="form-group text-left">
+
+                                IGNANT Balance: <span id="balanceBurning">0</span>
+                                <br />
+                                <b>IGNANT Burnt: <span id="ignantBurnt">0</span></b>
+
+                                <br />
+                                <label class="ls text-uppercase mb-0">Burn 1:1 AIG staked of IGNANT to acquire maximum APY
+                                    <span class="maxApy"></span></label>
+                                <input style="background-color: lightgoldenrodyellow;" class="form-control"
+                                    type="number" step="any" placeholder="Burn Amount" id="burnAmount" />
+                                <a style="color:white;" class="btn btn-block btn-success mt-4"
+                                    onclick="BurnTokens()">Burn
+                                    IGNANT&nbsp;<i class="fa fa-burn"></i></a>
+                                    <label class="ls text-uppercase mb-0"><i class="fa fa-info-circle"></i>&nbsp;Burning auto-claims
+                                       any accrued IGNANT</label>
+                                <br />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h5>AIG "ADDRESS" : <a style="word-wrap: break-word; word-break: break-all;"
+                        href="https://etherscan.io/token/0x6e9513330fe54AD5a793908dFE5676596394534a"
+                        target="_blank">0x6e9513330fe54AD5a793908dFE5676596394534a</a></h5>
+                <h5>IGNANT "ADDRESS" : <a style="word-wrap: break-word; word-break: break-all;" href="https://etherscan.io/token/0x90f54b8dc2a84092dEA959d0308C8040A05Ac4E9" target="_blank">0x90f54b8dc2a84092dEA959d0308C8040A05Ac4E9</a></h5>
+                <h5>TELEGRAPH : <a href="https://t.me/ArtificialIgnorance" target="_blank">t.me/ArtificialIgnorance</a>
+                </h5>
+
+            </div>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="https://unpkg.com/@walletconnect/web3-provider@1.7.8/dist/umd/index.min.js"></script>
+        <script src="js/web3.min.js"></script>
+        <script src="js/web3Connect.js?ver=1.3.1"></script>
+        <script src="js/main.js?ver=1.6.5"></script>
+</body>
+
+</html>
